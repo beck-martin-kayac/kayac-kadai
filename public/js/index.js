@@ -1,4 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global){
+; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
@@ -9814,45 +9816,70 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
+; browserify_shim__define__module__export__(typeof $ != "undefined" ? $ : window.$);
+
+}).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Sample = function Sample() {
-    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var Counter = function () {
+    function Counter() {
+        var _this = this;
 
-    _classCallCheck(this, Sample);
+        _classCallCheck(this, Counter);
 
-    this.name = opts.name;
-};
+        this.countUp = function () {
+            return _this.$counter_result_id.html(_this.currentCount += 1);
+        };
 
-exports.default = Sample;
-;
+        $(function () {
+            _this.initialize();
+        });
+    }
+
+    _createClass(Counter, [{
+        key: 'initialize',
+        value: function initialize() {
+            this.currentCount = 0;
+            this.$countUpButton = $('.js-btn-countUp');
+            this.$counter_result_id = $('#counter_result_id');
+            this.$counter_result_id.html(this.currentCount);
+            this.$countUpButton.on('click', this.countUp);
+            console.log('init');
+        }
+    }]);
+
+    return Counter;
+}();
+
+exports.default = Counter;
 
 },{}],3:[function(require,module,exports){
 'use strict';
-
-var _Sample = require('./lib/Sample');
-
-var _Sample2 = _interopRequireDefault(_Sample);
 
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
+var _Counter = require('./Counter');
+
+var _Counter2 = _interopRequireDefault(_Counter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var sample = new _Sample2.default({
-    name: 'world'
-});
+window.jQuery = _jquery2.default;
 
-(0, _jquery2.default)('.wrapper').on('click', function () {
-    console.log('hello, ' + sample.name + '.');
-});
 
-},{"./lib/Sample":2,"jquery":1}]},{},[3]);
+var counter = new _Counter2.default();
+
+},{"./Counter":2,"jquery":1}]},{},[3]);
