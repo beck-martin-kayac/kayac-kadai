@@ -31,7 +31,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "browser-sync": "2.11.*",
     "browserify": "12.0.*",
-    "browserify-shim" : "^3.8.14",
+    "browserify-shim": "^3.8.14",
     "gulp": "git://github.com/gulpjs/gulp.git#4.0",
     "node-pre-gyp": "^0.6.31",
     "gulp-pleeease": "2.0.*",
@@ -43,7 +43,11 @@
     "read-config": "2.0.*",
     "reset.css": "^2.0.2",
     "rev-logger": "1.1.1",
-    "vinyl-source-stream": "1.1.*"
+    "vinyl-source-stream": "1.1.*",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
+    "redux": "^3.6.0",
+    "react-redux": "^5.0.4"
   },
   "babel": {
     "presets": [
@@ -60,5 +64,9 @@
     "transform": [
       "browserify-shim"
     ]
+  },
+  "dependencies": {
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0"
   }
 }
