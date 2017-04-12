@@ -1,35 +1,69 @@
 export default class Counter {
 
-    constructor() {
+    constructor(id) {
         $(() => {
+            this.id = id;
             this.initialize();
         });
     }
 
     initialize(){
+        console.log(this.id);
+        $('#hidden-template li').attr('data-id', this.id );
         var template = $('#hidden-template').html();
-        for (var i = 0; i < 10; i++) {
-            $('ul').append(template);
-        };
+        console.log($(template).attr('data-id', this.id ));
+        $(template).attr('data-id', this.id );
+        $('ul').append(template);
 
         let currentCount = 0;
 
-        $( "li" ).each(function( index, element ){
-            this.$countUpButton = $( this ).find(".js-btn-countUp") ;
-            this.$counter_result_id = $( this ).find('#counter_result_id');
-            console.log(this.$countUpButton);
+            this.$countUpButton = $(".js-btn-countUp") ;
+            this.$counter_result_id = $('#counter_result_id');
             this.$counter_result_id.html( currentCount );
             this.$countUpButton.on('click', () => {
-                console.log('click');
+              this.$counter_result_id.html(parseInt(this.$counter_result_id.text()) +1);
+            });
+    }
+}
+
+// todo 
+export class TurboCounter extends Counter {
+    constructor(id) {
+        super(id);
+    }
+    initialize(){
+        var template = $('#hidden-template').html();
+        $('ul').append(template);
+    
+        let currentCount = 0;
+
+            this.$countUpButton = $( this ).find(".js-btn-countUp") ;
+            this.$counter_result_id = $( this ).find('#counter_result_id');
+            this.$counter_result_id.html( currentCount );
+            this.$countUpButton.on('click', () => {
                 this.$counter_result_id.html(parseInt(this.$counter_result_id.text()) +1);
             });
 
-        });
-           
     }
+}
 
-    countUp = () => {
-        console.log('click');
-        // return 
+// todo 
+export class UltraTurboCounter extends Counter {
+    constructor(id) {
+        super(id);
+    }
+    initialize(){
+        var template = $('#hidden-template').html();
+        $('ul').append(template);
+    
+        let currentCount = 0;
+
+            this.$countUpButton = $( this ).find(".js-btn-countUp") ;
+            this.$counter_result_id = $( this ).find('#counter_result_id');
+            this.$counter_result_id.html( currentCount );
+            this.$countUpButton.on('click', () => {
+                this.$counter_result_id.html(parseInt(this.$counter_result_id.text()) +1);
+            });
+
     }
 }
