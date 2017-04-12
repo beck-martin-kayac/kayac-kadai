@@ -12,7 +12,6 @@ export default class Counter {
         this.$counter_result_id = $('#counter_result_id');
         this.$counter_result_id.html(this.currentCount);
         this.$countUpButton.on('click', this.countUp);
-        console.log('init');
     }
 
     countUp = () => {

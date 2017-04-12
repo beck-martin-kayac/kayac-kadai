@@ -9855,7 +9855,6 @@ var Counter = function () {
             this.$counter_result_id = $('#counter_result_id');
             this.$counter_result_id.html(this.currentCount);
             this.$countUpButton.on('click', this.countUp);
-            console.log('init');
         }
     }]);
 
@@ -9876,9 +9875,6 @@ var _Counter = require('./Counter');
 var _Counter2 = _interopRequireDefault(_Counter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.jQuery = _jquery2.default;
-
 
 var counter = new _Counter2.default();
 
