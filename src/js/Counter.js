@@ -7,14 +7,29 @@ export default class Counter {
     }
 
     initialize(){
-        this.currentCount = 0;
-        this.$countUpButton = $('.js-btn-countUp');
-        this.$counter_result_id = $('#counter_result_id');
-        this.$counter_result_id.html(this.currentCount);
-        this.$countUpButton.on('click', this.countUp);
+        var template = $('#hidden-template').html();
+        for (var i = 0; i < 10; i++) {
+            $('ul').append(template);
+        };
+
+        let currentCount = 0;
+
+        $( "li" ).each(function( index, element ){
+            this.$countUpButton = $( this ).find(".js-btn-countUp") ;
+            this.$counter_result_id = $( this ).find('#counter_result_id');
+            console.log(this.$countUpButton);
+            this.$counter_result_id.html( currentCount );
+            this.$countUpButton.on('click', () => {
+                console.log('click');
+                this.$counter_result_id.html(parseInt(this.$counter_result_id.text()) +1);
+            });
+
+        });
+           
     }
 
     countUp = () => {
-        return this.$counter_result_id.html(this.currentCount+=1);
+        console.log('click');
+        // return 
     }
 }

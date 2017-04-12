@@ -8,6 +8,9 @@ prepend ConfigBlock
 //- append JavascriptBlock
 
 block ContentBlock
-  button.js-btn-countUp +
-  span count:
-  span#counter_result_id
+    ul
+        script(id="hidden-template" type="text/x-custom-template")
+           li
+               button.js-btn-countUp +
+               span count:
+               span#counter_result_id

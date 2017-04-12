@@ -9839,7 +9839,8 @@ var Counter = function () {
         _classCallCheck(this, Counter);
 
         this.countUp = function () {
-            return _this.$counter_result_id.html(_this.currentCount += 1);
+            console.log('click');
+            // return 
         };
 
         $(function () {
@@ -9850,11 +9851,25 @@ var Counter = function () {
     _createClass(Counter, [{
         key: 'initialize',
         value: function initialize() {
-            this.currentCount = 0;
-            this.$countUpButton = $('.js-btn-countUp');
-            this.$counter_result_id = $('#counter_result_id');
-            this.$counter_result_id.html(this.currentCount);
-            this.$countUpButton.on('click', this.countUp);
+            var template = $('#hidden-template').html();
+            for (var i = 0; i < 10; i++) {
+                $('ul').append(template);
+            };
+
+            var currentCount = 0;
+
+            $("li").each(function (index, element) {
+                var _this2 = this;
+
+                this.$countUpButton = $(this).find(".js-btn-countUp");
+                this.$counter_result_id = $(this).find('#counter_result_id');
+                console.log(this.$countUpButton);
+                this.$counter_result_id.html(currentCount);
+                this.$countUpButton.on('click', function () {
+                    console.log('click');
+                    _this2.$counter_result_id.html(parseInt(_this2.$counter_result_id.text()) + 1);
+                });
+            });
         }
     }]);
 
