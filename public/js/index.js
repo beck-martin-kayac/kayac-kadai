@@ -9830,20 +9830,20 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Counter = function () {
-    function Counter() {
+    function Counter(id) {
         var _this = this;
 
         _classCallCheck(this, Counter);
 
-        this.countUp = function () {
-            console.log('click');
-            // return 
-        };
-
         $(function () {
+            _this.id = id;
             _this.initialize();
         });
     }
@@ -9851,24 +9851,22 @@ var Counter = function () {
     _createClass(Counter, [{
         key: 'initialize',
         value: function initialize() {
+            var _this2 = this;
+
+            console.log(this.id);
+            $('#hidden-template li').attr('data-id', this.id);
             var template = $('#hidden-template').html();
-            for (var i = 0; i < 10; i++) {
-                $('ul').append(template);
-            };
+            console.log($(template).attr('data-id', this.id));
+            $(template).attr('data-id', this.id);
+            $('ul').append(template);
 
             var currentCount = 0;
 
-            $("li").each(function (index, element) {
-                var _this2 = this;
-
-                this.$countUpButton = $(this).find(".js-btn-countUp");
-                this.$counter_result_id = $(this).find('#counter_result_id');
-                console.log(this.$countUpButton);
-                this.$counter_result_id.html(currentCount);
-                this.$countUpButton.on('click', function () {
-                    console.log('click');
-                    _this2.$counter_result_id.html(parseInt(_this2.$counter_result_id.text()) + 1);
-                });
+            this.$countUpButton = $(".js-btn-countUp");
+            this.$counter_result_id = $('#counter_result_id');
+            this.$counter_result_id.html(currentCount);
+            this.$countUpButton.on('click', function () {
+                _this2.$counter_result_id.html(parseInt(_this2.$counter_result_id.text()) + 1);
             });
         }
     }]);
@@ -9876,7 +9874,75 @@ var Counter = function () {
     return Counter;
 }();
 
+// todo 
+
+
 exports.default = Counter;
+
+var TurboCounter = exports.TurboCounter = function (_Counter) {
+    _inherits(TurboCounter, _Counter);
+
+    function TurboCounter(id) {
+        _classCallCheck(this, TurboCounter);
+
+        return _possibleConstructorReturn(this, (TurboCounter.__proto__ || Object.getPrototypeOf(TurboCounter)).call(this, id));
+    }
+
+    _createClass(TurboCounter, [{
+        key: 'initialize',
+        value: function initialize() {
+            var _this4 = this;
+
+            var template = $('#hidden-template').html();
+            $('ul').append(template);
+
+            var currentCount = 0;
+
+            this.$countUpButton = $(this).find(".js-btn-countUp");
+            this.$counter_result_id = $(this).find('#counter_result_id');
+            this.$counter_result_id.html(currentCount);
+            this.$countUpButton.on('click', function () {
+                _this4.$counter_result_id.html(parseInt(_this4.$counter_result_id.text()) + 1);
+            });
+        }
+    }]);
+
+    return TurboCounter;
+}(Counter);
+
+// todo 
+
+
+var UltraTurboCounter = exports.UltraTurboCounter = function (_Counter2) {
+    _inherits(UltraTurboCounter, _Counter2);
+
+    function UltraTurboCounter(id) {
+        _classCallCheck(this, UltraTurboCounter);
+
+        return _possibleConstructorReturn(this, (UltraTurboCounter.__proto__ || Object.getPrototypeOf(UltraTurboCounter)).call(this, id));
+    }
+
+    _createClass(UltraTurboCounter, [{
+        key: 'initialize',
+        value: function initialize() {
+            var _this6 = this;
+
+            var template = $('#hidden-template').html();
+            $('ul').append(template);
+
+            var currentCount = 0;
+
+            this.$countUpButton = $(this).find(".js-btn-countUp");
+            this.$counter_result_id = $(this).find('#counter_result_id');
+            this.$counter_result_id.html(currentCount);
+            this.$countUpButton.on('click', function () {
+                _this6.$counter_result_id.html(parseInt(_this6.$counter_result_id.text()) + 1);
+            });
+        }
+    }]);
+
+    return UltraTurboCounter;
+}(Counter);
 
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -9891,6 +9957,8 @@ var _Counter2 = _interopRequireDefault(_Counter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var counter = new _Counter2.default();
+var counter = new _Counter2.default(1);
+// const counter2 = new TurboCounter(2);
+// const counter3 = new UltraTurboCounter(3);
 
 },{"./Counter":2,"jquery":1}]},{},[3]);
