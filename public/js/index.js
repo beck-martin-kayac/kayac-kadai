@@ -9822,7 +9822,7 @@ return jQuery;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -9834,29 +9834,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Counter = function () {
     function Counter() {
-        var _this = this;
-
         _classCallCheck(this, Counter);
 
-        this.countUp = function () {
-            return _this.$counter_result_id.html(_this.currentCount += 1);
-        };
-
-        $(function () {
-            _this.initialize();
-        });
+        this.countUp = function () {};
     }
 
     _createClass(Counter, [{
-        key: 'initialize',
-        value: function initialize() {
-            this.currentCount = 0;
-            this.$countUpButton = $('.js-btn-countUp');
-            this.$counter_result_id = $('#counter_result_id');
-            this.$counter_result_id.html(this.currentCount);
-            this.$countUpButton.on('click', this.countUp);
-            console.log('init');
-        }
+        key: "initialize",
+        value: function initialize() {}
     }]);
 
     return Counter;
