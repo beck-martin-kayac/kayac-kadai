@@ -9822,7 +9822,7 @@ return jQuery;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -9838,24 +9838,14 @@ var Counter = function () {
 
         _classCallCheck(this, Counter);
 
-        this.countUp = function () {
-            console.log('click');
-            // return 
-        };
-
         $(function () {
             _this.initialize();
         });
     }
 
     _createClass(Counter, [{
-        key: 'initialize',
+        key: "initialize",
         value: function initialize() {
-            var template = $('#hidden-template').html();
-            for (var i = 0; i < 10; i++) {
-                $('ul').append(template);
-            };
-
             var currentCount = 0;
 
             $("li").each(function (index, element) {
@@ -9863,10 +9853,8 @@ var Counter = function () {
 
                 this.$countUpButton = $(this).find(".js-btn-countUp");
                 this.$counter_result_id = $(this).find('#counter_result_id');
-                console.log(this.$countUpButton);
                 this.$counter_result_id.html(currentCount);
                 this.$countUpButton.on('click', function () {
-                    console.log('click');
                     _this2.$counter_result_id.html(parseInt(_this2.$counter_result_id.text()) + 1);
                 });
             });
@@ -9890,6 +9878,12 @@ var _Counter = require('./Counter');
 var _Counter2 = _interopRequireDefault(_Counter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var template = (0, _jquery2.default)('#hidden-template').html();
+
+for (var i = 0; i < 10; i++) {
+    (0, _jquery2.default)('ul').append(template);
+};
 
 var counter = new _Counter2.default();
 
