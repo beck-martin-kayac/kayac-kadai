@@ -15,6 +15,6 @@ export default class Counter {
     }
 
     countUp = () => {
-        return this.$counter_result_id.html(this.currentCount+=1);
+        return this.$counter_result_id.html(this.$counter_result_id.html()+=1);
     }
 }

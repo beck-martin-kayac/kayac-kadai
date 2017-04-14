@@ -9838,12 +9838,15 @@ var Counter = function () {
 
         _classCallCheck(this, Counter);
 
+        this.reset = function () {};
+
         this.countUp = function () {
             return _this.$counter_result_id.html(_this.currentCount += 1);
         };
 
         $(function () {
             _this.initialize();
+            _this.reset();
         });
     }
 
@@ -9853,8 +9856,8 @@ var Counter = function () {
             this.currentCount = 0;
             this.$countUpButton = $('.js-btn-countUp');
             this.$counter_result_id = $('#counter_result_id');
-            this.$counter_result_id.html(this.currentCount);
             this.$countUpButton.on('click', this.countUp);
+            this.$counter_result_id.html(this.currentCount);
         }
     }]);
 
